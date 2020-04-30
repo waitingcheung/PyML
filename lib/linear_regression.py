@@ -2,10 +2,11 @@ import sys
 import numpy as np
 
 class LinearRegression:
-    def __init__(self, weight=1, bias=2, lr=1e-4):
+    def __init__(self, weight=1, bias=2, lr=1e-4, verbose=False):
         self.weight = weight
         self.bias = bias
         self.lr = lr
+        self.verbose = verbose
 
     def predict(self, x):
         return self.weight * x + self.bias
@@ -31,9 +32,12 @@ class LinearRegression:
         count = 0
         prev_loss = 0
         epsilon = 1e-8
-        for _ in range(sys.maxsize):
+        for i in range(sys.maxsize):
             self.update_weights(x, y)
             loss = self.mse_loss(x, y)
+
+            if self.verbose and i % int(1 / self.lr) == 0:
+                print(f'iter {i} \t weight {self.weight :.3f} \t bias {self.bias :.3f} \t loss {loss :.3f}')
 
             if abs(loss - prev_loss) < epsilon:
                 count += 1
