@@ -37,7 +37,7 @@ class LinearRegression:
             loss = self.mse_loss(x, y)
 
             if self.verbose and i % int(1 / self.lr) == 0:
-                print(f'iter {i} \t weight {self.weight :.3f} \t bias {self.bias :.3f} \t loss {loss :.3f}')
+                print(f'iter {i :>7} \t weight {self.weight :>7.3f} \t bias {self.bias :>7.3f} \t loss {loss :>7.3f}')
 
             if abs(loss - prev_loss) < epsilon:
                 count += 1
