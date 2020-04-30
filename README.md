@@ -13,6 +13,7 @@ from lib.linear_regression import LinearRegression
 
 x = 30 * np.random.random((50, 1))
 y = 0.5 * x + 1.0 + np.random.normal(size=x.shape)
+
 model = LinearRegression(verbose=True)
 model.fit(x, y)
 
