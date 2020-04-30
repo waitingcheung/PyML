@@ -1,5 +1,7 @@
 import sys
+
 import numpy as np
+
 
 class LinearRegression:
     def __init__(self, weight=1, bias=2, lr=1e-4, verbose=False):
