@@ -1,7 +1,8 @@
 # PyML
 
-## Overview
+A minimalistic implementation of common machine learning algorithms.
 
+## Overview
 
 Linear Regression | Logistic Regression
 :---: | :---:
