@@ -1,5 +1,12 @@
 # PyML
 
+## Overview
+
+
+Linear Regression | Logistic Regression
+:---: | :---:
+![](images/linear_regression.png) | ![](images/logistic_regression.png)
+
 ## Usage
 
 ### Linear Regression
