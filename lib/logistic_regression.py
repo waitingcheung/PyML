@@ -25,12 +25,7 @@ class LogisticRegression:
     # Vectorized Gradient Descent
     # gradient = X.T * (X*W - y) / N
     # gradient = features.T * (predictions - labels) / N
-    def update_weights(self, x, y):
-        '''
-        Features:(200, 3)
-        Labels: (200, 1)
-        Weights:(3, 1)
-        '''    
+    def update_weights(self, x, y):   
         predictions = self.predict_proba(x)
         gradient = np.dot(x.T,  predictions - y)
         self.weights -= self.lr * (gradient / len(x))
