@@ -2,6 +2,7 @@ import sys
 
 import numpy as np
 
+from lib.loss import log_loss
 from lib.math import sigmoid
 
 
@@ -20,27 +21,6 @@ class LogisticRegression:
             self.weights = np.random.rand(x.shape[-1])
 
         return sigmoid(np.dot(x, self.weights))
-
-    def log_loss(self, x, y):
-        '''
-        Features:(100,3)
-        Labels: (100,1)
-        Weights:(3,1)
-        Returns 1D matrix of predictions
-        Cost = ( log(predictions) + (1-labels)*log(1-predictions) ) / len(labels)
-        '''
-        predictions = self.predict_proba(x)
-        
-        #Take the error when label=1
-        class1_loss = -y*np.log(predictions)
-
-        #Take the error when label=0
-        class2_loss = (1-y)*np.log(1-predictions)
-        
-        #Take the sum of both costs
-        loss = class1_loss - class2_loss
-
-        return np.mean(loss)
 
     # Vectorized Gradient Descent
     # gradient = X.T * (X*W - y) / N
@@ -79,7 +59,8 @@ class LogisticRegression:
         epsilon = 1e-8
         for i in range(sys.maxsize):
             self.update_weights(x, y)
-            loss = self.log_loss(x, y)
+            y_pred = self.predict_proba(x)
+            loss = log_loss(y, y_pred)
 
             if self.verbose and i % int(1 / self.lr) == 0:
                 print(f'iter {i :>7} \t loss {loss :>7.3f}')
