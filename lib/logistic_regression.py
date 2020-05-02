@@ -2,7 +2,7 @@ import sys
 
 import numpy as np
 
-from lib.loss import log_loss
+from lib.loss import cross_entropy_loss
 from lib.math import sigmoid
 
 
@@ -60,7 +60,7 @@ class LogisticRegression:
         for i in range(sys.maxsize):
             self.update_weights(x, y)
             y_pred = self.predict_proba(x)
-            loss = log_loss(y, y_pred)
+            loss = cross_entropy_loss(y, y_pred)
 
             if self.verbose and i % int(1 / self.lr) == 0:
                 print(f'iter {i :>7} \t loss {loss :>7.3f}')
