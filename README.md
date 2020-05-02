@@ -38,7 +38,7 @@ from sklearn.datasets import make_blobs
 
 from lib.logistic_regression import LogisticRegression
 
-x, y = make_blobs(n_samples=1000, centers=2, random_state=0)
+x, y = make_blobs(n_samples=80, centers=2, random_state=0)
 
 model = LogisticRegression(verbose=True)
 model.fit(x, y)
