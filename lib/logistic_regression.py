@@ -2,15 +2,14 @@ import sys
 
 import numpy as np
 
+from lib.math import sigmoid
+
 
 class LogisticRegression:
     def __init__(self, weights=None, lr=1e-4, verbose=False):
         self.weights = weights
         self.lr = lr
         self.verbose = verbose
-
-    def sigmoid(self, z):
-        return  1 / (1 + np.exp(-z))
 
     def predict_proba(self, x):
         '''
@@ -20,7 +19,7 @@ class LogisticRegression:
         if self.weights is None:
             self.weights = np.random.rand(x.shape[-1])
 
-        return self.sigmoid(np.dot(x, self.weights))
+        return sigmoid(np.dot(x, self.weights))
 
     def log_loss(self, x, y):
         '''
