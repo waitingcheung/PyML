@@ -4,9 +4,11 @@ A minimalistic implementation of common machine learning algorithms.
 
 ## Overview
 
-[Linear Regression](#linear-regression) | [Logistic Regression](#logistic-regression) | [Naive Bayes](#naive-bayes)
-:---: | :---: | :---:
-![](images/linear_regression.png) | ![](images/logistic_regression.png) | ![](images/naive_bayes.png)
+[**Linear Regression**](#linear-regression) | [**Logistic Regression**](#logistic-regression)
+:---: | :---:
+![](images/linear_regression.png) | ![](images/logistic_regression.png) 
+[**Naive Bayes**](#naive-bayes) | [**k-NN**](#k-NN)
+ ![](images/naive_bayes.png) | ![](images/knn.png)
 
 ## Usage
 
@@ -61,6 +63,21 @@ model = NaiveBayes()
 model.fit(X, y)
 
 y_pred = model.predict(X)
+```
+
+### k-NN
+[Full Example](examples/knn.ipynb)
+
+```python
+from sklearn.datasets import make_moons
+
+from lib.knn import KNeighborsClassifier
+
+X, y = make_moons(noise=0.3, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+model = KNeighborsClassifier(k=3)
+y_pred = model.predict(X_train, y_train, X_test)
 ```
 
 ## References
