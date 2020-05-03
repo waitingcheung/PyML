@@ -46,6 +46,24 @@ model.fit(X, y)
 y_pred = model.predict(X)
 ```
 
+### Naive Bayes
+
+[Full Example](examples/naive_bayes.ipynb)
+
+```python
+from sklearn.datasets import make_blobs
+
+from lib.naive_bayes import NaiveBayes
+
+X, y = make_blobs(n_samples=60, centers=2, random_state=2, cluster_std=1.5)
+
+model = NaiveBayes()
+model.fit(X, y)
+
+y_pred = model.predict(X)
+```
+
 ## References
 
 - [fast.ai Wiki](http://wiki.fast.ai/index.php/Main_Page)
+- [Implementing Naive Bayes in 2 minutes with Python](https://towardsdatascience.com/implementing-naive-bayes-in-2-minutes-with-python-3ecd788803fe)
