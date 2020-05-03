@@ -67,7 +67,3 @@ class LogisticRegression:
                 count = 0
             
             prev_loss = loss
-
-    def accuracy(self, predicted_labels, actual_labels):
-        diff = predicted_labels - actual_labels
-        return 1.0 - (float(np.count_nonzero(diff)) / len(diff))
