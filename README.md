@@ -45,3 +45,7 @@ model.fit(X, y)
 
 y_pred = model.predict(X)
 ```
+
+## References
+
+- [fast.ai Wiki](http://wiki.fast.ai/index.php/Main_Page)
