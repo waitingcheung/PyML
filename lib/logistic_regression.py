@@ -12,49 +12,46 @@ class LogisticRegression:
         self.lr = lr
         self.verbose = verbose
 
-    def predict_proba(self, x):
+    def predict_proba(self, X):
         '''
         Returns 1D array of probabilities
         that the class label == 1
         '''
         if self.weights is None:
-            self.weights = np.random.rand(x.shape[-1])
+            self.weights = np.random.rand(X.shape[-1])
 
-        return sigmoid(np.dot(x, self.weights))
+        return sigmoid(np.dot(X, self.weights))
 
     # Vectorized Gradient Descent
     # gradient = X.T * (X*W - y) / N
     # gradient = features.T * (predictions - labels) / N
-    def update_weights(self, x, y):   
-        predictions = self.predict_proba(x)
-        gradient = np.dot(x.T,  predictions - y)
-        self.weights -= self.lr * (gradient / len(x))
+    def _update_weights(self, X, y):   
+        predictions = self.predict_proba(X)
+        gradient = np.dot(X.T,  predictions - y)
+        self.weights -= self.lr * (gradient / len(X))
 
-    def decision_boundary(self, prob):
+    def _decision_boundary(self, prob):
         return 1 if prob >= .5 else 0
 
-    def predict(self, x):
+    def predict(self, X):
         '''
         preds = N element array of predictions between 0 and 1
         returns N element array of 0s (False) and 1s (True)
         '''
-        proba = self.predict_proba(x)
-        decision_boundary = np.vectorize(self.decision_boundary)  #vectorized function
+        proba = self.predict_proba(X)
+        decision_boundary = np.vectorize(self._decision_boundary)  #vectorized function
         return decision_boundary(proba).flatten()
 
-    def fit(self, x, y):
-        x = np.asarray(x)
-        y = np.asarray(y)
-
+    def fit(self, X, y):
         if self.weights is None:
-            self.weights = np.random.rand(x.shape[-1])
+            self.weights = np.random.rand(X.shape[-1])
 
         count = 0
         prev_loss = 0
         epsilon = 1e-8
         for i in range(sys.maxsize):
-            self.update_weights(x, y)
-            y_pred = self.predict_proba(x)
+            self._update_weights(X, y)
+            y_pred = self.predict_proba(X)
             loss = cross_entropy_loss(y, y_pred)
 
             if self.verbose and i % int(1 / self.lr) == 0:
