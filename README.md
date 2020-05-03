@@ -19,14 +19,14 @@ import numpy as np
 
 from lib.linear_regression import LinearRegression
 
-x = 30 * np.random.random((50, 1))
-y = 0.5 * x + 1.0 + np.random.normal(size=x.shape)
+X = 30 * np.random.random((50, 1))
+y = 0.5 * X + 1.0 + np.random.normal(size=X.shape)
 
 model = LinearRegression(verbose=True)
-model.fit(x, y)
+model.fit(X, y)
 
-x_new = np.linspace(0, 30, 100)
-y_new = model.predict(x_new[:, np.newaxis])
+X_new = np.linspace(0, 30, 100)
+y_new = model.predict(X_new[:, np.newaxis])
 ```
 
 ### Logistic Regression
@@ -38,10 +38,10 @@ from sklearn.datasets import make_blobs
 
 from lib.logistic_regression import LogisticRegression
 
-x, y = make_blobs(n_samples=80, centers=2, random_state=0)
+X, y = make_blobs(n_samples=80, centers=2, random_state=0)
 
 model = LogisticRegression(verbose=True)
-model.fit(x, y)
+model.fit(X, y)
 
-y_pred = model.predict(x)
+y_pred = model.predict(X)
 ```
