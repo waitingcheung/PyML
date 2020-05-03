@@ -4,7 +4,7 @@ A minimalistic implementation of common machine learning algorithms.
 
 ## Overview
 
-Linear Regression | Logistic Regression | Naive Bayes
+[Linear Regression](#linear-regression) | [Logistic Regression](#logistic-regression) | [Naive Bayes](#naive-bayes)
 :---: | :---: | :---:
 ![](images/linear_regression.png) | ![](images/logistic_regression.png) | ![](images/naive_bayes.png)
 
