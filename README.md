@@ -4,11 +4,11 @@ A minimalistic implementation of common machine learning algorithms.
 
 ## Overview
 
-[**Linear Regression**](#linear-regression) | [**Logistic Regression**](#logistic-regression)
-:---: | :---:
+[**Linear Regression**](#linear-regression) | [**Logistic Regression**](#logistic-regression) | []()
+:---: | :---: | :---:
 ![](images/linear_regression.png) | ![](images/logistic_regression.png) 
-[**Naive Bayes**](#naive-bayes) | [**k-NN**](#k-NN)
- ![](images/naive_bayes.png) | ![](images/knn.png)
+[**Naive Bayes**](#naive-bayes) | [**CART**](#cart) | [**k-NN**](#k-NN)
+ ![](images/naive_bayes.png) | ![](images/cart.png) | ![](images/knn.png) 
 
 ## Usage
 
@@ -65,6 +65,21 @@ model.fit(X, y)
 y_pred = model.predict(X)
 ```
 
+### CART
+[Full Example](examples/cart.ipynb)
+
+```python
+from sklearn.datasets import load_iris
+
+from lib.cart import DecisionTreeClassifier
+
+X, y = load_iris(return_X_y=True)
+
+model = DecisionTreeClassifier()
+model.fit(X, y)
+y_pred = model.predict(X)
+```
+
 ### k-NN
 [Full Example](examples/knn.ipynb)
 
@@ -84,4 +99,5 @@ y_pred = model.predict(X_train, y_train, X_test)
 
 - [fast.ai Wiki](http://wiki.fast.ai/index.php/Main_Page)
 - [Implementing Naive Bayes in 2 minutes with Python](https://towardsdatascience.com/implementing-naive-bayes-in-2-minutes-with-python-3ecd788803fe)
+- [Decision Tree from Scratch in Python](https://towardsdatascience.com/decision-tree-from-scratch-in-python-46e99dfea775)
 - [Develop k-Nearest Neighbors in Python From Scratch](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)
