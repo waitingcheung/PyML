@@ -84,3 +84,4 @@ y_pred = model.predict(X_train, y_train, X_test)
 
 - [fast.ai Wiki](http://wiki.fast.ai/index.php/Main_Page)
 - [Implementing Naive Bayes in 2 minutes with Python](https://towardsdatascience.com/implementing-naive-bayes-in-2-minutes-with-python-3ecd788803fe)
+- [Develop k-Nearest Neighbors in Python From Scratch](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)
