@@ -4,9 +4,9 @@ A minimalistic implementation of common machine learning algorithms.
 
 ## Overview
 
-[**Linear Regression**](#linear-regression) | [**Logistic Regression**](#logistic-regression) | []()
+[**Linear Regression**](#linear-regression) | [**Logistic Regression**](#logistic-regression) | [**SVM**](#svm)
 :---: | :---: | :---:
-![](images/linear_regression.png) | ![](images/logistic_regression.png) 
+![](images/linear_regression.png) | ![](images/logistic_regression.png) | ![](images/svm.png) 
 [**Naive Bayes**](#naive-bayes) | [**CART**](#cart) | [**k-NN**](#k-NN)
  ![](images/naive_bayes.png) | ![](images/cart.png) | ![](images/knn.png) 
 
@@ -43,6 +43,46 @@ from lib.logistic_regression import LogisticRegression
 X, y = make_blobs(n_samples=80, centers=2, random_state=0)
 
 model = LogisticRegression(verbose=True)
+model.fit(X, y)
+
+y_pred = model.predict(X)
+```
+
+### SVM
+
+Note: This implements [PEGASOS: Primal Estimated sub-GrAdient SOlver for SVM](https://ttic.uchicago.edu/~nati/Publications/PegasosMPB.pdf) instead of the standard SVM.
+
+#### Linear Separable
+
+[Full Example](examples/svm_linear.ipynb)
+
+```python
+from sklearn.datasets import make_blobs
+
+from lib.pegasos import PegasosSVM
+
+X, y = make_blobs(n_samples=40, centers=2, random_state=6)
+y = np.where(y > 0, 1, -1)
+
+model = PegasosSVM(kernel='linear', max_iter=120)
+model.fit(X, y)
+
+y_pred = model.predict(X)
+```
+
+#### Non-linear Separable
+
+[Full Example](examples/svm_nonlinear.ipynb)
+
+```python
+from sklearn.datasets import make_circles
+
+from lib.pegasos import PegasosSVM
+
+X, y = make_circles(noise=0.2, factor=0.5, random_state=1)
+y = np.where(y > 0, 1, -1)
+
+model = PegasosSVM(kernel='rbf', max_iter=500)
 model.fit(X, y)
 
 y_pred = model.predict(X)
@@ -101,3 +141,4 @@ y_pred = model.predict(X_train, y_train, X_test)
 - [Implementing Naive Bayes in 2 minutes with Python](https://towardsdatascience.com/implementing-naive-bayes-in-2-minutes-with-python-3ecd788803fe)
 - [Decision Tree from Scratch in Python](https://towardsdatascience.com/decision-tree-from-scratch-in-python-46e99dfea775)
 - [Develop k-Nearest Neighbors in Python From Scratch](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)
+- [Implementing PEGASOS: Primal Estimated sub-GrAdient SOlver for SVM, Logistic Regression and Application in Sentiment Classification (in Python)](https://sandipanweb.wordpress.com/2018/04/29/implementing-pegasos-primal-estimated-sub-gradient-solver-for-svm-using-it-for-sentiment-classification-and-switching-to-logistic-regression-objective-by-changing-the-loss-function-in-python/)
