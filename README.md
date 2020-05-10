@@ -187,28 +187,24 @@ y_pred = model.predict(X_train, y_train, X_test)
 [Full Example](examples/kmeans.ipynb)
 
 ```python
->>> import numpy as np
->>> from sklearn.datasets import make_blobs
+import numpy as np
+from sklearn.datasets import make_blobs
 
->>> from lib.kmeans import KMeans
+from lib.kmeans import KMeans
 
->>> np.random.seed(0)
+np.random.seed(0)
 
->>> centers = [[1, 1], [-1, -1], [1, -1]]
->>> n_clusters = len(centers)
->>> X, _ = make_blobs(n_samples=3000, centers=centers, cluster_std=0.7)
+centers = [[1, 1], [-1, -1], [1, -1]]
+n_clusters = len(centers)
+X, _ = make_blobs(n_samples=3000, centers=centers, cluster_std=0.7)
 
->>> kmeans = KMeans(n_clusters=3, random_state=0)
->>> kmeans.fit(X)
->>> kmeans.cluster_centers_
-array([[ 1.07705469, -1.06730994],
-       [ 0.96700708,  1.01837274],
-       [-1.07159013, -1.00648645]])
+kmeans = KMeans(n_clusters=3, random_state=0)
+kmeans.fit(X)
+kmeans.cluster_centers_
 
->>> np.random.seed(0)
->>> X_new, _ = make_blobs(n_samples=10, centers=centers, cluster_std=0.7)
->>> kmeans.predict(X_new)
-array([0, 1, 2, 2, 1, 2, 1, 0, 1, 0])
+np.random.seed(0)
+X_new, _ = make_blobs(n_samples=10, centers=centers, cluster_std=0.7)
+kmeans.predict(X_new)
 ```
 
 ## References
