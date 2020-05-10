@@ -14,6 +14,8 @@ A minimalistic implementation of common machine learning algorithms.
 
 ### Linear Regression
 
+`class LinearRegression(weight=1, bias=2, lr=1e-4, verbose=False)` [\[source\]](lib/linear_regression.py)
+
 [Full Example](examples/linear_regression.ipynb)
 
 ```python
@@ -33,6 +35,8 @@ y_new = model.predict(X_new[:, np.newaxis])
 
 ### Logistic Regression
 
+`class LogisticRegression(weights=None, lr=1e-4, verbose=False)` [\[source\]](lib/logistic_regression.py)
+
 [Full Example](examples/logistic_regression.ipynb)
 
 ```python
@@ -49,6 +53,8 @@ y_pred = model.predict(X)
 ```
 
 ### SVM
+
+`class PegasosSVM(kernel='rbf', degree=3, gamma=1, coef0=0.0, lambda_=1, max_iter=10)` [\[source\]](lib/pegasos.py)
 
 Note: This implements [PEGASOS: Primal Estimated sub-GrAdient SOlver for SVM](https://ttic.uchicago.edu/~nati/Publications/PegasosMPB.pdf) instead of the standard SVM.
 
@@ -90,6 +96,8 @@ y_pred = model.predict(X)
 
 ### Naive Bayes
 
+`class NaiveBayes()` [\[source\]](lib/naive_bayes.py)
+
 [Full Example](examples/naive_bayes.ipynb)
 
 ```python
@@ -106,6 +114,9 @@ y_pred = model.predict(X)
 ```
 
 ### CART
+
+`class DecisionTreeClassifier(max_depth=None)` [\[source\]](lib/cart.py)
+
 [Full Example](examples/cart.ipynb)
 
 ```python
@@ -121,6 +132,9 @@ y_pred = model.predict(X)
 ```
 
 ### k-NN
+
+`class KNeighborsClassifier(k=1)` [\[source\]](lib/knn.py)
+
 [Full Example](examples/knn.ipynb)
 
 ```python
