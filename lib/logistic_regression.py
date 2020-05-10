@@ -7,9 +7,10 @@ from lib.math import sigmoid
 
 
 class LogisticRegression:
-    def __init__(self, weights=None, lr=1e-4, verbose=False):
+    def __init__(self, weights=None, lr=1e-3, tol=1e-4, verbose=False):
         self.weights = weights
         self.lr = lr
+        self.tol = tol
         self.verbose = verbose
 
     def predict_proba(self, X):
@@ -46,9 +47,8 @@ class LogisticRegression:
         if self.weights is None:
             self.weights = np.random.rand(X.shape[-1])
 
-        count = 0
-        prev_loss = 0
-        epsilon = 1e-8
+        best_loss, best_itr = None, 0
+
         for i in range(sys.maxsize):
             self._update_weights(X, y)
             y_pred = self.predict_proba(X)
@@ -57,10 +57,8 @@ class LogisticRegression:
             if self.verbose and i % int(1 / self.lr) == 0:
                 print(f'iter {i :>7} \t loss {loss :>7.3f}')
 
-            if abs(loss - prev_loss) < epsilon:
-                count += 1
-                if count == 2: break
-            else:
-                count = 0
-            
-            prev_loss = loss
+            if best_loss and abs(loss - best_loss) < self.tol and i - best_itr >= 2:
+                break
+
+            if best_loss is None or loss < best_loss:
+                best_loss, best_itr = loss, i
