@@ -14,7 +14,7 @@ A minimalistic implementation of common machine learning algorithms.
 
 ### Unsupervised Learning
 
-[**k-means**](#k-means-clustering) | []() | []()
+[**_k_-means**](#k-means-clustering) | []() | []()
 :---: | :---: | :---:
 ![](images/kmeans.png) | []() | []()
 
