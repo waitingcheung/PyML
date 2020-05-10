@@ -17,12 +17,14 @@ class LinearRegression:
         return self.weight * X + self.bias
 
     def _update_weights(self, X, y):
+        '''
+        Calculate partial derivatives
+        MSE = (y - (mx + b))^2
+        dM = -2x(y - (mx + b))
+        dB = -2(y - (mx + b))
+        '''
         y_pred = self.predict(X)
-
-        # Calculate partial derivatives
-        # -2x(y - (mx + b))
         weight_deriv = -2 * X * (y - y_pred)
-        # -2(y - (mx + b))
         bias_deriv = -2 * (y - y_pred)
 
         self.weight -= self.lr * np.mean(weight_deriv)
