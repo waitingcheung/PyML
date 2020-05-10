@@ -16,9 +16,11 @@ A minimalistic implementation of common machine learning algorithms.
 
 ### Linear Regression
 
-`class LinearRegression(weight=1, bias=2, lr=1e-3, verbose=False)` [\[source\]](lib/linear_regression.py)
+`class LinearRegression(lr=1e-3, tol=1e-4, verbose=False)` [\[source\]](lib/linear_regression.py)
 
-[Full Example](examples/linear_regression.ipynb)
+#### Simple Linear Regression
+
+[Full Example](examples/linear_regression_simple.ipynb)
 
 ```python
 import numpy as np
@@ -33,6 +35,27 @@ model.fit(X, y)
 
 X_new = np.linspace(0, 30, 100)
 y_new = model.predict(X_new[:, np.newaxis])
+```
+
+#### Multiple Linear Regression
+
+[Full Example](examples/linear_regression_multiple.ipynb)
+
+```python
+import numpy as np
+
+from lib.linear_regression import LinearRegression
+
+rng = np.random.RandomState(1)
+
+X = rng.randn(200, 2)
+y = np.dot(X, [-2, 1]) + 0.1 * rng.randn(X.shape[0])
+
+model = LinearRegression(verbose=True)
+model.fit(X, y)
+
+X_new = rng.randn(100, 2)
+y_new = model.predict(X_new)
 ```
 
 ### Logistic Regression
