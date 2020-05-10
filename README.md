@@ -60,7 +60,7 @@ y_new = model.predict(X_new)
 
 ### Logistic Regression
 
-`class LogisticRegression(weights=None, lr=1e-3, verbose=False)` [\[source\]](lib/logistic_regression.py)
+`class LogisticRegression(weights=None, lr=1e-3, tol=1e-4, verbose=False)` [\[source\]](lib/logistic_regression.py)
 
 [Full Example](examples/logistic_regression.ipynb)
 
