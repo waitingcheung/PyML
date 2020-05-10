@@ -4,21 +4,23 @@ import numpy as np
 from scipy.stats import norm
 
 
-class NaiveBayes:        
+class NaiveBayes:
+    def __init__(self):
+        self.pdf = np.vectorize(norm.pdf)
+
     def predict(self, X):
         y_pred = []
 
         for x in X:
-            probas_x = {}
+            best_proba, best_label = 0, None
 
-            # P(X1, X2, ... Xn | C) = P(C|X1) * P(C|X2) * ... * P(C|Xn) * P(C)
             for c in self.labels:
-                probas_x[c] = self.probas[c]
-                
-                for feature in x:
-                    probas_x[c] *= norm.pdf(feature, self.means[c], self.stds[c])
+                # P(X1, X2, ... Xn | C) = P(C|X1) * P(C|X2) * ... * P(C|Xn) * P(C)
+                proba = np.prod(self.pdf(x, self.means[c], self.stds[c])) * self.probas[c]
+                if proba > best_proba:
+                    best_proba, best_label = proba, c
 
-            y_pred.append(max(probas_x.items(), key=operator.itemgetter(1))[0])
+            y_pred.append(best_label)
 
         return y_pred
 
