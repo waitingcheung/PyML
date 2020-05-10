@@ -64,7 +64,7 @@ from lib.pegasos import PegasosSVM
 X, y = make_blobs(n_samples=40, centers=2, random_state=6)
 y = np.where(y > 0, 1, -1)
 
-model = PegasosSVM(kernel='linear', max_iter=120)
+model = PegasosSVM(kernel='linear', max_iter=100)
 model.fit(X, y)
 
 y_pred = model.predict(X)
@@ -82,7 +82,7 @@ from lib.pegasos import PegasosSVM
 X, y = make_circles(noise=0.2, factor=0.5, random_state=1)
 y = np.where(y > 0, 1, -1)
 
-model = PegasosSVM(kernel='rbf', max_iter=500)
+model = PegasosSVM(kernel='rbf', max_iter=100)
 model.fit(X, y)
 
 y_pred = model.predict(X)

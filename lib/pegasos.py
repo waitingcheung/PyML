@@ -51,7 +51,8 @@ class PegasosSVM:
         self.weights = np.zeros(m if self.kernel else n) 
 
         for i in range(self.max_iter):
-            eta = 1. / (self.lambda_ * (i + 1))            
+            eta = 1. / (self.lambda_ * (i + 1))
+            np.random.seed(i)         
             idx = np.random.randint(0, m)
             X_i, y_i = X[idx], y[idx]
 
