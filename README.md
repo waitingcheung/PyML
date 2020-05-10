@@ -198,13 +198,13 @@ centers = [[1, 1], [-1, -1], [1, -1]]
 n_clusters = len(centers)
 X, _ = make_blobs(n_samples=3000, centers=centers, cluster_std=0.7)
 
-kmeans = KMeans(n_clusters=3, random_state=0)
-kmeans.fit(X)
-kmeans.cluster_centers_
+model = KMeans(n_clusters=3, random_state=0)
+model.fit(X)
+model.cluster_centers_
 
 np.random.seed(0)
 X_new, _ = make_blobs(n_samples=10, centers=centers, cluster_std=0.7)
-kmeans.predict(X_new)
+model.predict(X_new)
 ```
 
 ## References
