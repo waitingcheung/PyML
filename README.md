@@ -4,6 +4,8 @@ A minimalistic implementation of common machine learning algorithms.
 
 ## Overview
 
+### Supervised Learning
+
 [**Linear Regression**](#linear-regression) | [**Logistic Regression**](#logistic-regression) | [**SVM**](#svm)
 :---: | :---: | :---:
 ![](images/linear_regression.png) | ![](images/logistic_regression.png) | ![](images/svm.png) 
