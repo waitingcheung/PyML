@@ -14,7 +14,7 @@ class KMeans:
         self.cluster_centers_ = None
 
     def predict(self, X):
-        return [np.argmin(euclidean_distance(x, self.cluster_centers_, axis=1)) for x in X]
+        return np.array([np.argmin(euclidean_distance(x, self.cluster_centers_, axis=1)) for x in X])
 
     def fit(self, X):
         np.random.seed(seed=self.random_state)
@@ -24,7 +24,7 @@ class KMeans:
         
         cluster_centers_ = np.random.randn(self.n_clusters, X.shape[1]) * std + mean
         cluster_centers_old_ = np.zeros(cluster_centers_.shape)
-        
+
         distances = np.zeros((X.shape[0], self.n_clusters))
 
         for _ in range(self.max_iter):
