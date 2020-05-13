@@ -14,9 +14,9 @@ A minimalistic implementation of common machine learning algorithms.
 
 ### Unsupervised Learning
 
-[**_k_-means**](#k-means-clustering) | []() | []()
+[**_k_-means**](#k-means-clustering) | [**PCA**]() | []()
 :---: | :---: | :---:
-![](images/kmeans.png) | []() | []()
+![](images/kmeans.png) | ![](images/pca.png) | []()
 
 ## Usage
 
@@ -207,6 +207,23 @@ X_new, _ = make_blobs(n_samples=10, centers=centers, cluster_std=0.7)
 model.predict(X_new)
 ```
 
+### PCA
+
+`class PCA(n_components=None, whiten=False)` [\[source\]](lib/pca.py)
+
+[Full Example](examples/pca.ipynb)
+
+```python
+from sklearn import datasets
+
+from lib.pca import PCA
+
+X, y = datasets.load_iris(return_X_y=True)
+model = PCA(n_components=3)
+model.fit(X)
+X = model.transform(X)
+```
+
 ## References
 
 - [fast.ai Wiki](http://wiki.fast.ai/index.php/Main_Page)
@@ -215,3 +232,4 @@ model.predict(X_new)
 - [Develop k-Nearest Neighbors in Python From Scratch](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)
 - [Implementing PEGASOS: Primal Estimated sub-GrAdient SOlver for SVM, Logistic Regression and Application in Sentiment Classification (in Python)](https://sandipanweb.wordpress.com/2018/04/29/implementing-pegasos-primal-estimated-sub-gradient-solver-for-svm-using-it-for-sentiment-classification-and-switching-to-logistic-regression-objective-by-changing-the-loss-function-in-python/)
 - [K-Means Clustering Implementation in Python](https://www.kaggle.com/andyxie/k-means-clustering-implementation-in-python)
+- [How to Calculate Principal Component Analysis (PCA) from Scratch in Python](https://machinelearningmastery.com/calculate-principal-component-analysis-scratch-python/)
