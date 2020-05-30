@@ -42,7 +42,6 @@ class LinearRegression:
             loss = mse_loss(y, y_pred) / 2
 
             if self.verbose and i % int(1 / self.lr) == 0:
-                # print(f'iter {i :>7} \t weight {self.weight :>7.3f} \t bias {self.bias :>7.3f} \t loss {loss :>7.3f}')
                 print(f'iter {i :>7} \t loss {loss :>7.3f}')
 
             if best_loss and abs(loss - best_loss) < self.tol and i - best_itr >= 2:
