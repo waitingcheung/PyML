@@ -14,9 +14,9 @@ A minimalistic implementation of common machine learning algorithms.
 
 ### Unsupervised Learning
 
-[**_k_-means**](#k-means-clustering) | [**PCA**](#pca) | []()
+[Expectation-Maximization](#expectation-maximization) | [**_k_-means**](#k-means-clustering) | [**PCA**](#pca)
 :---: | :---: | :---:
-![](images/kmeans.png) | ![](images/pca.png) | []()
+![](images/gmm.png) | ![](images/kmeans.png) | ![](images/pca.png)
 
 ## Usage
 
@@ -180,6 +180,25 @@ model = KNeighborsClassifier(k=3)
 y_pred = model.predict(X_train, y_train, X_test)
 ```
 
+### Expectation-Maximization
+
+`class GMM(n_components=1, tol=0.001, max_iter=100, init_params='kmeans', random_state=None)` [\[source\]](lib/gmm.py)
+
+[Full Example](examples/gmm.ipynb)
+
+```python
+from sklearn.datasets import make_blobs
+
+from lib.gmm import GMM
+
+X, y = make_blobs(n_samples=400, centers=4, cluster_std=0.60, random_state=0)
+X = X[:, ::-1] # flip axes for better plotting
+
+model = GMM(n_components=4, random_state=2)
+model.fit(X)
+labels = model.predict(X)
+```
+
 ### _k_-means clustering
 
 `class KMeans(n_clusters=8, max_iter=300, tol=1e-4, random_state=None)` [\[source\]](lib/kmeans.py)
@@ -231,5 +250,6 @@ X = model.transform(X)
 - [Decision Tree from Scratch in Python](https://towardsdatascience.com/decision-tree-from-scratch-in-python-46e99dfea775)
 - [Develop k-Nearest Neighbors in Python From Scratch](https://machinelearningmastery.com/tutorial-to-implement-k-nearest-neighbors-in-python-from-scratch/)
 - [Implementing PEGASOS: Primal Estimated sub-GrAdient SOlver for SVM, Logistic Regression and Application in Sentiment Classification (in Python)](https://sandipanweb.wordpress.com/2018/04/29/implementing-pegasos-primal-estimated-sub-gradient-solver-for-svm-using-it-for-sentiment-classification-and-switching-to-logistic-regression-objective-by-changing-the-loss-function-in-python/)
+- [ML From Scratch, Part 5: Gaussian Mixture Models](http://www.oranlooney.com/post/ml-from-scratch-part-5-gmm/)
 - [K-Means Clustering Implementation in Python](https://www.kaggle.com/andyxie/k-means-clustering-implementation-in-python)
 - [How to Calculate Principal Component Analysis (PCA) from Scratch in Python](https://machinelearningmastery.com/calculate-principal-component-analysis-scratch-python/)
