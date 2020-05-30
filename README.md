@@ -196,7 +196,7 @@ X = X[:, ::-1] # flip axes for better plotting
 
 model = GMM(n_components=4, random_state=2)
 model.fit(X)
-labels = model.predict(X)
+model.predict(X)
 ```
 
 ### _k_-means clustering
