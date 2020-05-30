@@ -45,20 +45,16 @@ class GMM:
 
     def fit(self, X):
         np.random.seed(seed=self.random_state)
-
         weights_shape = X.shape[0], self.n_components
 
         if self.init_params == 'kmeans':
-            kmeans = KMeans(self.n_components, random_state=self.random_state)
-            kmeans.fit(X)
-            classes = kmeans.predict(X)
+            kmeans = KMeans(self.n_components, random_state=self.random_state).fit(X)
             self.weights_ = np.zeros(weights_shape)
-            self.weights_[np.arange(X.shape[0]), classes] = 1
+            self.weights_[np.arange(X.shape[0]), kmeans.predict(X)] = 1
         else:
             self.weights_ = np.random.rand(*weights_shape)
         
         self.phi = np.random.rand(*weights_shape)
-
         random_row = np.random.randint(0, len(X), self.n_components)
         self.means_ = [X[r, :] for r in random_row]
         self.covariances_ = [np.cov(X.T) for _ in range(self.n_components)]
@@ -70,5 +66,4 @@ class GMM:
 
             if abs(best_likelihood - log_likelihood) < self.tol:
                 break
-
             best_likelihood = log_likelihood

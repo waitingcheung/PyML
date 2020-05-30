@@ -41,4 +41,6 @@ class KMeans:
             for i in range(self.n_clusters):
                 cluster_centers_[i] = np.mean(X[clusters == i], axis=0)
 
-        self.cluster_centers_ = cluster_centers_        
+        self.cluster_centers_ = cluster_centers_
+
+        return self
