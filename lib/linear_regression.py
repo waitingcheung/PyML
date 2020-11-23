@@ -12,8 +12,9 @@ class LinearRegression:
         self.verbose = verbose
 
     def predict(self, X):
+        # Append a bias term
         if X.shape[1] < len(self.weights):
-            bias = np.ones(shape=(X.shape[0], 1))
+            bias = np.ones(shape=(len(X), 1))
             X = np.append(X, bias, axis=1)
         return np.dot(X, self.weights)
 
@@ -21,15 +22,14 @@ class LinearRegression:
         '''
         Calculate partial derivatives
         MSE = (y - (w1x1 + w2x2 + ... + wnxn))^2
-        d_wk = -x(y - wkxk)
+        d_wk = -2x(y - wkxk)
         '''
         y_pred = self.predict(X)
-        error = y - y_pred
-        gradient = np.dot(-X.T, error) / X.shape[0]
+        gradient = -2 * np.dot(X.T, y - y_pred) / len(X)
         self.weights -= self.lr * gradient
 
     def fit(self, X, y, weights=None):
-        bias = np.ones(shape=(X.shape[0], 1))
+        bias = np.ones(shape=(len(X), 1))
         X = np.append(X, bias, axis=1)
         y = np.squeeze(y)
         self.weights = weights if weights else np.zeros(X.shape[1])
@@ -44,6 +44,7 @@ class LinearRegression:
             if self.verbose and i % int(1 / self.lr) == 0:
                 print(f'iter {i :>7} \t loss {loss :>7.3f}')
 
+            # Early stopping
             if best_loss and abs(loss - best_loss) < self.tol and i - best_itr >= 2:
                 break
 
