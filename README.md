@@ -1,6 +1,6 @@
 # PyML
 
-A minimalistic implementation of common machine learning algorithms.
+A minimalistic implementation of common machine learning algorithms in Python and Numpy.
 
 ## Overview
 
