@@ -1,6 +1,6 @@
 # PyML
 
-![](https://tokei.rs/b1/github/waitingcheung/pyml?category=code)
+![](https://img.shields.io/github/license/waitingcheung/pyml) ![](https://tokei.rs/b1/github/waitingcheung/pyml?category=code)
 
 A minimalistic implementation of common machine learning algorithms in Python and Numpy.
 
