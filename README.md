@@ -1,5 +1,7 @@
 # PyML
 
+![](https://tokei.rs/b1/github/waitingcheung/pyml)
+
 A minimalistic implementation of common machine learning algorithms in Python and Numpy.
 
 ## Overview
